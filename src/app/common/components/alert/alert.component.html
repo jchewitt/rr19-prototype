@@ -1,0 +1,6 @@
+<div *ngIf="alertService.displayAlert" class="alert alert-danger alert-dismissible" role="alert">
+  {{alertService.alertContent}}
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

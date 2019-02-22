@@ -1,0 +1,39 @@
+.toggle-wrapper {
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: #fff;
+  white-space: nowrap;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-bottom: 4px;
+  .toggle-option {
+    display: inline-block;
+    margin-top: 2px;
+    height: 24px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+    span {
+      line-height: 26px;
+      font-size: 11px;
+      color: #3f4d5c;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.active {
+      background-color: #f65126;
+      cursor: default;
+      span {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+}

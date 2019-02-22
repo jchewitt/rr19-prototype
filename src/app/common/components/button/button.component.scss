@@ -1,0 +1,33 @@
+button {
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 16px;
+  background-color: #ff5b35;
+  font-weight: bold;
+  font-size: 11px;
+  font-family: arial, helvetica;
+  color: #fff;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.max-width {
+    width: 100%;
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border: 2px solid #ff5b35;
+    color: #ff5b35;
+    padding-top: 2px;
+    padding-bottom: 1px;
+  }
+}

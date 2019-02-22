@@ -1,0 +1,18 @@
+<div class="input-wrapper" [class.active]="state == 'active'" [class.inactive]="state == 'inactive'">
+  <div [attr.contenteditable]="editable"
+       #textarea
+       [class.large]="large"
+       [class.active]="state=='active'"
+       [class.inactive]="state=='inactive'"
+       [class.canEdit]="!viewOnly"
+       class="text-input"
+       tabindex="0"
+       (input)="change($event)"
+       (click)="editInput()"
+       role="textbox"></div>
+  <div class="iconEdit" (click)="editInput()" *ngIf="!disabled || viewOnly">✎</div>
+  <div class="button-container" *ngIf="editable">
+    <app-button (click)="save()"><span translate="btnSave">Save</span></app-button>
+    <app-button (click)="cancel()" [styleType]="'secondary'"><span translate="btnCancel">Cancel</span></app-button>
+  </div>
+</div>

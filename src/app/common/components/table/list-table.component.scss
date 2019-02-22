@@ -1,0 +1,52 @@
+.table {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+
+  .table-header {
+    display: flex;
+    &.sortable {
+      cursor: pointer;
+      .table-column {
+        span.sort {
+          &:after {
+            margin-left: 5px;
+            content: '';
+          }
+          &.sort-up {
+            &:after {
+              content: '\25B2';
+            }
+          }
+          &.sort-down {
+            &:after {
+              content: '\25bc';
+            }
+          }
+        }
+      }
+    }
+  }
+  .table-row {
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    background-color: #fff;
+    &.draggable {
+      cursor: move;
+    }
+    &:nth-child(odd) {
+      background-color: #e8e8e8;
+    }
+    .table-column {
+      flex: 1 1 0;
+      padding: 10px 9px;
+      color: #646469;
+      font-family: arial;
+      border: 1px solid #d9e3e8;
+    }
+  }
+}

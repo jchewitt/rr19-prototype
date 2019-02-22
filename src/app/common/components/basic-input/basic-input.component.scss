@@ -1,0 +1,75 @@
+
+:host {
+  &:focus {
+    outline-style: none;
+    outline: none;
+    border: none;
+  }
+}
+
+div.text-input {
+  width: calc(100% - 30px);
+  position: relative;
+  color: #646469;
+  font-family: arial;
+  font-size: 14px;
+  padding-left: 5px;
+  min-height: 32px;
+  &.canEdit {
+    cursor: pointer;
+  }
+  &:hover {
+    &.canEdit {
+      border: 1.5px solid #efefef;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  &.active {
+    border: 1.5px solid #e8e6e6;
+    border-radius: 7px;
+    background-color: #fff;
+    &.large {
+      min-height: 80px;
+    }
+  }
+  &.inactive {
+    border: none;
+  }
+}
+
+div.input-wrapper {
+  width: 100%;
+  position: relative;
+
+  div.button-container {
+    text-align: right;
+    padding-top: 5px;
+
+  }
+
+  &.active {
+    div.iconEdit {
+      display: none;
+    }
+  }
+
+  &.inactive {
+    div.iconEdit {
+      display: block;
+      position: absolute;
+      right: 0;
+      width: 25px;
+      height: 25px;
+      top: 0;
+      cursor: pointer;
+     // background: url('/assets/images/icon-edit.png') center center no-repeat;
+      &:focus {
+        outline-style: none;
+        outline: none;
+        border: none;
+      }
+    }
+  }
+}

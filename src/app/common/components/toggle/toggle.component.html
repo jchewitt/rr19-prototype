@@ -1,0 +1,8 @@
+<div class="toggle-wrapper">
+  <div class="toggle-option"
+       *ngFor="let toggleItem of toggleItems"
+       (click)="setToggle(toggleItem)"
+       [class.active]="currentToggle && currentToggle.value == toggleItem.value">
+    <span>{{toggleItem.label}}</span>
+  </div>
+</div>

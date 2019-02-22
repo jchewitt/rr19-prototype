@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h2>Project Dashboard</h2>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="row">
+      <div class="col">
+        <h4>Stats</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Average Budget: {{getAverageBudget() | currency}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Archived: {{getCount('archived')}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        New: {{getCount('new')}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Working: {{getCount('working')}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        Delivered: {{getCount('delivered')}}
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="row">
+      <div class="col">
+        <h4>Filters:</h4>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Title" [(ngModel)]="filters.title">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Division" [(ngModel)]="filters.division">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Project Owner" [(ngModel)]="filters.projectOwner">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Budget" [(ngModel)]="filters.budget">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Status" [(ngModel)]="filters.status">
+          </div>
+        </div>
+        <div class="row date-row">
+          <div class="col">
+            <input type="text" ngxDaterangepickerMd class="form-control"
+                   [(ngModel)]="filters.created" placeholder="Created"/>
+          </div>
+          <div class="col">
+            <input type="text" ngxDaterangepickerMd class="form-control"
+                   [(ngModel)]="filters.modified" placeholder="Modified"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" class="button-container">
+      <app-button (click)="applyFilters()">APPLY</app-button>
+      <app-button (click)="clearFilters()">CLEAR</app-button>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="row">
+      <div class="col">
+        <h4>Records</h4>
+      </div>
+    </div>
+    <div class="row" class="button-container">
+      <app-button>Add New Record</app-button>
+      <app-button>Export PDF</app-button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ng-template #row let-data="data" let-row="row" let-colIdx="columnIndex" let-rowIdx="rowIndex">
+          <app-basic-input *ngIf="row !== 'title' && row !== 'created' && row !== 'modified' && row !== 'budget'"
+                           [(ngModel)]="currentRecords[rowIdx][rows[colIdx]]"
+                           (onSave)="updateRecord($event, rowIdx, colIdx)"></app-basic-input>
+          <span *ngIf="row === 'title'"><a href="" (click)="gotoDetails($event)">{{data}}</a></span>
+          <span *ngIf="row === 'budget'">{{data | currency}}</span>
+          <span *ngIf="row === 'created' || row === 'modified'">{{data | date:'shortDate'}}</span>
+        </ng-template>
+        <app-pagination [count]="records.length" [(page)]="page" [size]="pageCount"
+                        (pageChange)="pageChanged($event)"></app-pagination>
+        <app-list-table [columns]="['Title', 'Division', 'Project Owner', 'Budget', 'Status', 'Created', 'Modified']"
+                        [rows]="rows"
+                        [items]="currentRecords"
+                        [sortable]="false"
+                        [rowTemplate]="row"
+        >
+        </app-list-table>
+        <app-pagination [count]="records.length" [(page)]="page" [size]="pageCount"
+                        (pageChange)="pageChanged($event)"></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>

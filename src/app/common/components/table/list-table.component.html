@@ -1,0 +1,20 @@
+<ng-template #defaultRowTemplate let-data="data">
+  {{data}}
+</ng-template>
+<ul class="table">
+  <li class="table-header table-row" [class.sortable]="sortable">
+    <div class="table-column" *ngFor="let column of columns; let i = index;" (click)="sortOn(i)">
+      <span [class.sort]="sortable"
+            [class.sort-up]="sortable && sortIdx === i && sortDirection === 'up'"
+            [class.sort-down]="sortable && sortIdx === i && sortDirection === 'down'"
+      >{{column}}</span>
+    </div>
+  </li>
+  <ng-container *ngIf="doneSorting">
+  <li class="table-row" *ngFor="let item of values; let i = index;">
+    <div class="table-column" *ngFor="let row of rows; let c = index">
+      <ng-container *ngTemplateOutlet="rowTemplate ? rowTemplate : defaultRowTemplate; context:{data: item[row], row: row, rowIndex: i, columnIndex: c}"></ng-container>
+    </div>
+  </li>
+  </ng-container>
+</ul>

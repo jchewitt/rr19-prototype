@@ -1,0 +1,8 @@
+<div class="toggle-wrapper" (click)="doToggle()">
+  <div class="toggle-option off" [class.active]="!toggle">
+    <span *ngIf="toggle">{{btnLabelOn}}</span>
+  </div>
+  <div class="toggle-option" [class.active]="toggle">
+    <span *ngIf="!toggle">{{btnLabelOff}}</span>
+  </div>
+</div>

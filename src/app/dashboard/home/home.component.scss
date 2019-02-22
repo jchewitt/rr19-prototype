@@ -1,0 +1,91 @@
+
+app-basic-input::ng-deep {
+  .text-input {
+    color: #646469;
+    font-family: arial;
+  }
+}
+app-basic-input::ng-deep {
+  app-button::ng-deep {
+    width: auto;
+    display: inline-block;
+    margin-right: 1px;
+  }
+}
+
+
+
+.table {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+
+  .table-header {
+    display: flex;
+    &.sortable {
+      cursor: pointer;
+      .table-column {
+        span.sort {
+          &:after {
+            margin-left: 5px;
+            content: '';
+          }
+          &.sort-up {
+            &:after {
+              content: '\25B2';
+            }
+          }
+          &.sort-down {
+            &:after {
+              content: '\25bc';
+            }
+          }
+        }
+      }
+    }
+  }
+  .table-row {
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    background-color: #fff;
+    &.draggable {
+      cursor: move;
+    }
+    &:nth-child(odd) {
+      background-color: #e8e8e8;
+    }
+    .table-column {
+      flex: 1 1 0;
+      padding: 10px 9px;
+      color: #646469;
+      font-family: arial;
+      border: 1px solid #d9e3e8;
+    }
+  }
+}
+
+.button-container {
+  padding: 5px 15px;
+  text-align: right;
+  app-button::ng-deep {
+    button {
+      margin-left: 5px;
+      display: inline-block;
+    }
+  }
+}
+
+.date-row {
+  margin-top: 10px;
+}
+
+.panel {
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 3px #eee;
+  padding: 10px;
+  margin: 10px 0;
+}

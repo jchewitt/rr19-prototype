@@ -1,0 +1,11 @@
+<div class="pagination-wrapper">
+  <app-button styleType="secondary" [buttonStyle]="buttonStyle" (click)="previous()"><span translate="btnPrevious">PREVIOUS</span></app-button>
+  <span translate="lblPage">Page</span>
+  <input type="text" class="form-control" [value]="page" style="display: inline-block; width: 50px;"
+         (keyup)="handlePageChange($event)" (blur)="handlePageChange($event)" />
+  <span>of {{pageCount}}</span>
+  <app-button styleType="secondary" [buttonStyle]="buttonStyle" (click)="next()"><span translate="btnNext">NEXT</span></app-button>
+
+  <app-button styleType="secondary" [buttonStyle]="buttonStyle" (click)="first()"><span translate="btnFirst">FIRST</span></app-button>
+  <app-button styleType="secondary" [buttonStyle]="buttonStyle" (click)="last()"><span translate="btnLast">LAST</span></app-button>
+</div>
